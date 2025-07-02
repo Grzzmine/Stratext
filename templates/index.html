@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stratext - Votre assistant de communication</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Strat'ext 💬</h1>
+            <p>Collez le message de votre client, on s'occupe du reste.</p>
+        </header>
+
+        <!-- ÉTAPE 1: ANALYSE -->
+        <div id="step1-analyze">
+            <textarea id="user-message" placeholder="Ex: Salut, j'aimerais bien savoir combien tu prends pour créer un logo pour ma boite..."></textarea>
+            <button id="analyze-btn">Analyser le message</button>
+        </div>
+        
+        <div id="loader" class="hidden">
+            <div class="spinner"></div>
+            <p>Analyse en cours...</p>
+        </div>
+
+        <!-- ÉTAPE 2: CONTEXTE & GÉNÉRATION -->
+        <div id="step2-context" class="hidden">
+            <h2>Analyse détectée</h2>
+            <p id="analysis-result"></p>
+            <hr>
+            <h3>Complétez pour générer la réponse parfaite :</h3>
+            <textarea id="reply-details" placeholder="Ajoutez des infos clés ici. Ex: Mon tarif est de 500€. La prochaine étape est un appel de 15 min."></textarea>
+            
+            <div class="options">
+                <select id="tone-select">
+                    <option value="Amical / Casual">Ton Amical</option>
+                    <option value="Formel">Ton Formel</option>
+                    <option value="Enthousiaste">Ton Enthousiaste</option>
+                    <option value="Direct et concis">Ton Direct</option>
+                </select>
+                <select id="channel-select">
+                    <option value="Email">Canal: Email</option>
+                    <option value="WhatsApp / DM Instagram">Canal: DM</option>
+                </select>
+            </div>
+            
+            <button id="generate-btn">Générer la réponse</button>
+        </div>
+
+        <!-- ÉTAPE 3: RÉSULTAT -->
+        <div id="step3-result" class="hidden">
+            <h2>Votre réponse est prête !</h2>
+            <textarea id="final-reply" readonly></textarea>
+            <button id="copy-btn">Copier le texte</button>
+            <button id="restart-btn">Analyser un autre message</button>
+        </div>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
